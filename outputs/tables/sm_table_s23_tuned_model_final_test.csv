@@ -1,0 +1,7 @@
+Rank,Model,Test RMSE,Test MAE,Test sMAPE (%),Test R²,Final interpretation
+1,CatBoost Regressor,1.051,0.861,9.854,0.795,Final selected model
+2,Stacking ensemble,1.163,0.954,11.057,0.749,Candidate ensemble comparator
+3,LightGBM Regressor,1.234,1.001,11.49,0.718,Candidate tuned model
+4,Random Forest Regressor,1.248,0.99,11.646,0.712,Candidate tuned model
+5,Gradient Boosting Regressor,1.252,1.006,11.651,0.71,"Strong baseline, not final after tuning"
+6,XGBoost Regressor,1.306,1.044,11.936,0.684,"Candidate tuned model, not final"

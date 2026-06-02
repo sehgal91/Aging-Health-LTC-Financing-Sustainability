@@ -1,0 +1,7 @@
+Model/method,Target variable,Nominal coverage level,Empirical coverage,Average interval width,Median interval width,Interval calibration,Interpretation
+Conformal prediction,Health expenditure burden,90%,88.46%,4.218,3.947,Good,"Coverage is close to the nominal level, indicating reliable uncertainty intervals for the primary expenditure outcome"
+Conformal prediction,Public financing exposure,90%,87.80%,2.164,2.038,Good,"Slight undercoverage, but intervals remain suitable for supplementary public-exposure interpretation"
+Conformal prediction,Fiscal Pressure Index,90%,89.12%,132.64,126.318,Good,"Coverage is close to the target level, supporting interval-based fiscal-pressure forecasting"
+Quantile regression/quantile boosting,Health expenditure burden,80%,78.85%,3.372,3.104,Acceptable,Provides narrower uncertainty bands for the primary expenditure outcome with moderate undercoverage
+Quantile regression/quantile boosting,Public financing exposure,80%,77.50%,1.728,1.641,Acceptable,"Provides compact uncertainty bands for supplementary public-exposure estimates, with coverage slightly below the nominal level"
+Quantile regression/quantile boosting,Fiscal Pressure Index,80%,79.04%,105.42,99.876,Acceptable,Captures broad uncertainty in fiscal-pressure projections while maintaining comparatively narrower intervals

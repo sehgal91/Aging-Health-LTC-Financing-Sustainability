@@ -1,0 +1,8 @@
+Rank,Model,Best selected configuration,Test RMSE,Test MAE,Test sMAPE (%),Test R²,Role in study
+1,CatBoost Regressor,iterations = 300; learning_rate = 0.05; depth = 4; l2_leaf_reg = 5,1.051,0.861,9.854,0.795,"Final tuned model retained for explainability, uncertainty analysis, and scenario forecasting"
+2,Stacking ensemble,Base learners combined with Elastic Net meta-learner,1.163,0.954,11.057,0.749,Candidate ensemble comparator
+3,LightGBM Regressor,learning_rate = 0.05; max_depth = 7; min_child_samples = 5; n_estimators = 100; reg_lambda = 1; subsample = 0.70,1.234,1.001,11.49,0.718,Candidate tuned boosting model
+4,Random Forest Regressor,Tuned tree-ensemble configuration,1.248,0.99,11.646,0.712,Candidate nonlinear tree model
+5,Gradient Boosting Regressor,Tuned gradient-boosting configuration,1.252,1.006,11.651,0.71,Best baseline model but not the best tuned model
+6,XGBoost Regressor,learning_rate = 0.10; max_depth = 3; min_child_weight = 1; n_estimators = 200; reg_lambda = 1; subsample = 0.70,1.306,1.044,11.936,0.684,Candidate tuned boosting model; not retained as final model
+7,Elastic Net,alpha = 0.01; l1_ratio = 0.20,1.7075,1.3953,16.3432,0.4596,Regularized linear comparator

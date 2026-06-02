@@ -1,0 +1,15 @@
+Variable / Model information,Pooled ordinary least squares,Fixed-effects model,Random-effects model
+Population aged 65+,0.166***,−0.063,0.007
+Standard error,(0.019),(0.097),(0.054)
+Dependency ratio,0.045**,0.027,0.020
+Standard error,(0.015),(0.022),(0.015)
+"GDP per capita, thousand units",0.025***,−0.048***,−0.043***
+Standard error,(0.006),(0.009),(0.005)
+Country effects,No,Yes,Random intercept
+Year effects,Yes,Yes,Yes
+Observations,518,518,518
+R² / pseudo-R²,0.271,—,0.413
+Within-R²,—,−0.134,0.413
+Between-R²,—,−0.416,−0.490
+Overall-R²,0.271,−0.415,−0.417
+AIC,2209.0,—,—

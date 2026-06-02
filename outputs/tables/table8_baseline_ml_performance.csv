@@ -1,0 +1,6 @@
+Rank,Model,RMSE,MAE,sMAPE (%),R²
+1,Gradient Boosting,1.517,1.091,12.063,0.573
+2,Random Forest,1.539,1.14,12.587,0.561
+3,Hybrid averaging ensemble,1.586,1.155,13.075,0.534
+4,Linear Regression,2.065,1.551,17.364,0.209
+5,Elastic Net,2.067,1.553,17.392,0.208

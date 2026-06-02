@@ -1,0 +1,6 @@
+Rank,Predictor,Mean importance,Standard deviation,Interpretation
+1,Gross domestic product per capita,0.813,0.139,Strongest predictor: macroeconomic capacity contributes most to model predictions
+2,Population aged 65 years and above,0.542,0.155,Major demographic driver of health expenditure burden
+3,Dependency ratio,0.165,0.055,Moderate contribution; captures demographic pressure from aging
+4,Year,0.001,0.003,Very small additional predictive contribution after demographic and macroeconomic variables are included
+5,Emerging economy,0.001,0.007,Limited additional contribution in the selected model specification
