@@ -2,7 +2,7 @@
 
 This repository contains the cleaned datasets, processed analytical panel, variable-construction workflow, reported analysis outputs, and reproducibility documentation associated with the study:
 
-**Forecasting Aging-Related Health and Long-Term Care Financing Sustainability Using Explainable Machine Learning and Scenario-Based Health-System Modelling**
+**Forecasting Aging-Related Health and Long-Term Care Financing Sustainability with Explainable Machine Learning and Scenario Modeling**
 
 ## Repository contents
 
