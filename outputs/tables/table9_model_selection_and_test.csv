@@ -1,0 +1,5 @@
+Stage,Period,Model,Metric,Value,Selection rule
+Validation,Development-period validation,CatBoost,Validation RMSE,1.238,Selected before test evaluation
+Untouched test,2022–2023,CatBoost,Test RMSE,1.692,Reported once after validation-based selection
+Untouched test,2022–2023,CatBoost,Test R²,0.470,Reported once after validation-based selection
+

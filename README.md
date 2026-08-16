@@ -1,34 +1,32 @@
-# Aging-Health-LTC-Financing-Sustainability
+# Health Expenditure Burden under Population Aging
 
-This repository contains the cleaned datasets, processed analytical panel, variable-construction workflow, reported analysis outputs, and reproducibility documentation associated with the study:
+This repository archives the data, documentation, and reported outputs for a 37-economy country-year study of **health expenditure as a percentage of GDP**. The outcome is a broad health-system expenditure-burden measure; it is not direct long-term-care (LTC) expenditure and does not establish LTC financing or fiscal sustainability.
 
-**Forecasting Aging-Related Health and Long-Term Care Financing Sustainability with Explainable Machine Learning and Scenario Modeling**
+## Final analytical design
 
-## Repository contents
+- Panel: 37 economies, 2010–2023 (518 country-year observations).
+- Core variables: health expenditure burden, population aged 65+, old-age dependency ratio, GDP per capita, year, and economy group.
+- Supplementary variables: government financing share and LTC workforce capacity, used only where observed because coverage is restricted.
+- Time split: model development through 2021; 2022–2023 retained as an untouched test period.
+- Model selection: CatBoost selected on validation RMSE (1.238), before test evaluation.
+- Untouched-test performance: RMSE 1.692 and R² 0.470.
+- Explainability: mean absolute SHAP values are archived in `outputs/tables/sm_table_s19_feature_importance.csv`.
+- Uncertainty: sequential conformal prediction targets 90% coverage; the observed final-period aggregate coverage reported in the manuscript is 90.5%. Unverified recalibration half-widths are not asserted here.
+- Scenarios: anchored 2024–2028 sensitivity trajectories, not validated forecasts.
 
-| Folder/File | Description |
+## Repository map
+
+| Path | Contents |
 |---|---|
-| `data/raw_cleaned/` | Cleaned country-year input datasets used to construct the analytical panel |
-| `data/processed/` | Processed master panel and derived-indicator files |
-| `data/data_dictionary.xlsx` | Variable definitions, units, and analytical roles |
-| `code/` | Python scripts documenting data processing, variable construction, and output-table generation |
-| `outputs/LTC_Reproducibility_Outputs.xlsx` | Workbook containing reported analytical output tables |
-| `outputs/tables/` | CSV versions of reported output tables |
-| `outputs/figures/` | Figure documentation |
-| `notebooks/` | Placeholder for Colab/Jupyter reproducibility workflow |
-| `DATA_SOURCES.md` | Summary of source-variable interpretation |
-| `DATA_PROCESSING.md` | Data-cleaning and harmonization workflow |
-| `REPRODUCIBILITY.md` | Instructions for reproducing the archived workflow |
-| `requirements.txt` | Python package requirements |
+| `data/` | Cleaned inputs, analytical panel, and data dictionary |
+| `code/` | Data-integrity, derived-variable, and reported-output audit scripts |
+| `outputs/tables/` | CSV tables aligned to the final manuscript framing |
+| `docs/` | Supplementary-material documentation |
+| `DATA_SOURCES.md` | Variable scope and coverage |
+| `DATA_PROCESSING.md` | Panel-construction and leakage-control rules |
+| `REPRODUCIBILITY.md` | What can and cannot be reproduced from the archive |
 
-## Primary outcome clarification
+## Interpretation boundary
 
-The primary outcome is **health expenditure burden**, measured as health expenditure as a percentage of gross domestic product. It is interpreted as a broad system-level indicator of aging-related health and care-financing pressure. It should not be interpreted as a direct measure of formal long-term care expenditure alone.
+Government-financing and LTC-workforce variables are supplementary restricted-sample evidence. The Fiscal Pressure Index and affordability measure are deterministic transformations used descriptively and in sensitivity analysis; they are not independent evidence of fiscal sustainability. Direct sustainability assessment would require expenditure obligations, financing or revenue capacity, a financing gap, and an explicit benchmark.
 
-## Reproducibility scope
-
-The repository provides cleaned datasets, processed files, documented Python workflow files, and output tables corresponding to the analyses reported in the study. The outputs include descriptive statistics, group-wise comparisons, econometric results, machine-learning model performance, tuned model selection, explainability outputs, prediction-interval metrics, scenario assumptions, scenario summaries, and robustness results.
-
-## Citation
-
-If using this repository, please cite the associated study.

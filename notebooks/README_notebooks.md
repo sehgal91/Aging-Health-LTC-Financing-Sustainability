@@ -1,3 +1,4 @@
 # Notebooks
 
-This folder may contain the Google Colab or Jupyter notebook version of the reproducibility workflow.
+No executable notebook is claimed in this archive. Use the audited scripts in `code/` and the machine-readable reported outputs in `outputs/tables/`.
+

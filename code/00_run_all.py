@@ -1,15 +1,9 @@
-"""
-Run-all workflow for the reproducibility archive.
+"""Run repository consistency checks without refitting unverified models."""
+from pathlib import Path
+import subprocess
+import sys
 
-This script documents the intended sequence:
-1. clean and merge data;
-2. construct derived indicators;
-3. export reported output tables.
+ROOT = Path(__file__).resolve().parents[1]
+for script in ("01_data_cleaning_and_merging.py", "02_variable_construction.py", "03_reported_output_tables.py"):
+    subprocess.run([sys.executable, str(ROOT / "code" / script)], cwd=ROOT, check=True)
 
-See README.md and REPRODUCIBILITY.md for details.
-"""
-
-print("Workflow steps:")
-print("1. Run 01_data_cleaning_and_merging.py")
-print("2. Run 02_variable_construction.py")
-print("3. Run 03_reported_output_tables.py")

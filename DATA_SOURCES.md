@@ -1,14 +1,8 @@
-# Data Sources and Variable Interpretation
+# Data Sources and Variable Scope
 
-The study uses publicly available country-year indicators covering:
+The repository contains harmonized country-year indicators for health expenditure as a percentage of GDP, population aged 65+, old-age dependency, GDP per capita, government/public financing share, and LTC workforce capacity.
 
-- health expenditure burden;
-- government/public financing share;
-- population aged 65 years and above;
-- old-age dependency ratio;
-- gross domestic product per capita;
-- long-term care workforce capacity.
+The primary outcome is health expenditure burden, not LTC expenditure. Government-financing share (41 observations in 3 countries) and LTC-workforce capacity (58 observations in 16 countries) are restricted-coverage supplementary variables and are not generalized to the full panel.
 
-The primary expenditure variable is interpreted as health expenditure as a percentage of GDP. Long-term care-specific public financing and workforce indicators are treated as supplementary variables because of limited country-year coverage.
+The core panel covers 37 economies from 2010 through 2023 (518 observations). Source-specific metadata and units are recorded in `data/data_dictionary.xlsx`; cleaned input files are retained in `data/raw_cleaned/`.
 
-The repository includes cleaned input files and a processed master analytical panel.

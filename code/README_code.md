@@ -1,12 +1,9 @@
-# Code
+# Code scope
 
-This folder contains Python scripts documenting the reproducibility workflow.
+These scripts perform archive-integrity and consistency checks. They do not claim to recreate model searches whose exact settings, pruning rules, seeds, or recalibration sequence are not available in verified artifacts.
 
-Main files:
+- `00_run_all.py` runs all checks.
+- `01_data_cleaning_and_merging.py` verifies the 2010–2023 panel keys and dimensions.
+- `02_variable_construction.py` reconstructs deterministic indicators while retaining restricted-sample missingness.
+- `03_reported_output_tables.py` verifies the final headline model, conformal, and scenario summaries.
 
-- `00_run_all.py`: overview script for running the workflow;
-- `01_data_cleaning_and_merging.py`: data harmonization and merging logic;
-- `02_variable_construction.py`: derived-variable construction;
-- `03_reported_output_tables.py`: generation of reported output tables.
-
-The repository is designed as a reproducibility archive associated with the study.

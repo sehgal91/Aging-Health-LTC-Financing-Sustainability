@@ -1,0 +1,3 @@
+Method,Target,Nominal coverage (%),Observed final-period aggregate coverage (%),Interpretation
+Sequential conformal prediction,Health expenditure burden,90,90.5,Empirical calibration in this sample; not a universal coverage guarantee
+
