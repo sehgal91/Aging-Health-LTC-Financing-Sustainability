@@ -1,7 +1,8 @@
-Rank,Predictor,Mean absolute SHAP value,Standard deviation,Interpretation
-1,Gross domestic product per capita,0.813,0.139,Largest global contribution to fitted CatBoost predictions
-2,Population aged 65 years and above,0.542,0.155,Second-largest global contribution to fitted CatBoost predictions
-3,Dependency ratio,0.165,0.055,Smaller global predictive contribution
-4,Year,0.001,0.003,Minimal additional predictive contribution
-5,Emerging-economy indicator,0.001,0.007,Minimal additional predictive contribution
+Rank	Predictor	Mean absolute SHAP	SD of absolute SHAP	Share of total mean absolute SHAP (%)	Interpretation
+1	GDP per capita	0.843	0.47	36.1	Largest contribution to independent-test predictions; nonlinear dependence across the observed income distribution
+2	Population aged 65 years and above	0.604	0.353	25.8	Second-largest predictive contribution; higher aging values generally contribute positively
+3	Year	0.482	0.204	20.6	Material temporal contribution across the 2022â€“2023 independent test period
+4	Old-age dependency ratio	0.309	0.267	13.2	Moderate contribution with heterogeneous and non-monotonic dependence
+5	Economy-group indicator	0.098	0.127	4.2	Small additional predictive contribution after demographic macroeconomic and temporal information
+
 
