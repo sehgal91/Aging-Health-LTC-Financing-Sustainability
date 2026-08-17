@@ -1,1 +1,0 @@
-This folder may contain the Google Colab or Jupyter notebook version of the reproducibility workflow.
