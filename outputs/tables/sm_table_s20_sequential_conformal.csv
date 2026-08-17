@@ -1,3 +1,8 @@
-Method,Target,Nominal coverage (%),Observed final-period aggregate coverage (%),Interpretation
-Sequential conformal prediction,Health expenditure burden,90,90.5,Empirical calibration in this sample; not a universal coverage guarantee
+Evaluation subset	N	Nominal coverage (%)	Empirical coverage (%)	Conformal half-width	Total interval width
+2022	37	90	86.5	1.821	3.643
+2023	37	90	89.2	1.897	3.794
+Final-period overall	74	90	87.8		
+High-income economies	64	90	85.9		
+Emerging economies	10	90	100		
+
 
