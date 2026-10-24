@@ -1,16 +1,12 @@
-# Raw Cleaned Data Files
+# Harmonized source files
 
-This folder contains cleaned country-year datasets prepared from publicly available international data sources.
+The standardized CSV files in this directory preserve the harmonized source-variable tables used to assemble the master dataset.
 
-The original source links are provided in `DATA_SOURCES.md`.
+Core study variables are:
 
-Files included:
+- health expenditure burden (`SH.XPD.CHEX.GD.ZS`);
+- population aged 65 years and above (`SP.POP.65UP.TO.ZS`);
+- total age dependency ratio (`SP.POP.DPND`); and
+- GDP per capita (`NY.GDP.PCAP.CD`), with `NY.GDP.PCAP.PP.KD` used for constant-PPP robustness.
 
-| File | Variable |
-|---|---|
-| `health_clean.csv` | Health expenditure burden |
-| `dependency_clean.csv` | Old-age dependency ratio |
-| `pop65_clean.csv` | Population aged 65 years and above |
-| `gov_share.csv` | Government/public financing share |
-| `ltc_workers.csv` | Long-term care workforce capacity |
-| `gdp_clean.xlsx` | GDP per capita |
+Government-financing and long-term-care workforce series have restricted coverage and remain missing where source observations are unavailable.
