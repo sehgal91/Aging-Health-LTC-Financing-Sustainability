@@ -1,11 +1,21 @@
-# Code scope
+# Code
 
-The repository contains archive-integrity checks, deterministic variable-construction scripts, reported-output checks, and the final CatBoost/sequential-conformal reconciliation workflow.
+## `build_analytical_panel.py`
+Creates the 37-economy, 2010–2023 analytical panel from the harmonized master table and validates the expected panel dimensions and complete coverage of the four core variables.
 
-- `00_run_all.py` runs the archive-consistency checks.
-- `01_data_cleaning_and_merging.py` verifies the 2010–2023 panel keys and dimensions.
-- `02_variable_construction.py` reconstructs deterministic indicators while retaining restricted-sample missingness.
-- `03_reported_output_tables.py` verifies reported headline summaries.
-- `final_catboost_sequential_reconciliation.py` reproduces the frozen CatBoost specification, expanding-window validation, independent 2022–2023 test evaluation, sequential conformal updating, and final SHAP analysis.
+Run from the repository root:
 
-Exact trial-by-trial hyperparameter-search histories are not claimed where corresponding logs are unavailable.
+```bash
+python code/build_analytical_panel.py
+```
+
+## `catboost_sequential_conformal.py`
+Runs the fixed CatBoost configuration used for nonlinear comparison, expanding-window validation, independent 2022–2023 test evaluation, SHAP analysis, and sequential conformal prediction.
+
+Run from the repository root:
+
+```bash
+python code/catboost_sequential_conformal.py
+```
+
+Machine-readable reported results for the econometric, robustness, benchmark, conformal, and scenario analyses are provided in `outputs/tables/`.
