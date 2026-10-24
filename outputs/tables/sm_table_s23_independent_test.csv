@@ -1,5 +1,0 @@
-Model,Development period,Selection basis,Final test period,Test N,RMSE,MAE,sMAPE (%),R2
-CatBoost,2010-2021,Best of original feature-based ML candidates,2022-2023,74,1.692,1.187,13.022,0.47
-One-step persistence,Chronological prior-year values,Strong temporal benchmark,2022-2023,74,0.66,0.517,5.837,0.919
-Country-fixed-effects linear,Chronological training folds,Strong country-aware linear benchmark,2022-2023,74,0.726,0.58,6.921,0.902
-Static 2021 persistence,2021 values only,Conservative no-2022-update benchmark,2022-2023,74,0.801,,,0.881

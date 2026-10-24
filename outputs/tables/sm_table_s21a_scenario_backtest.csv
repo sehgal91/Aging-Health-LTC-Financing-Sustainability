@@ -1,4 +1,0 @@
-Forecast horizon,Number of historical origins,Scenario-model RMSE,Scenario-model MAE,Persistence RMSE,Persistence MAE
-1 year,7,0.494,0.393,0.479,0.381
-3 years,5,0.899,0.74,0.862,0.712
-5 years,3,0.968,0.761,0.95,0.765

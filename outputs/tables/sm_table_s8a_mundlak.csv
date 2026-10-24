@@ -1,6 +1,0 @@
-Test component,Result
-Joint null hypothesis,"Country means of ln(Pop65), ln(Dependency), and ln(GDP_pc) jointly add no explanatory information"
-Wald chi-square,19.82
-Degrees of freedom,3
-p-value,<0.001
-Interpretation,Within- and between-country relationships should be distinguished
