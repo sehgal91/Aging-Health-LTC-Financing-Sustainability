@@ -1,0 +1,5 @@
+Model,Validation RMSE,Test RMSE,Test MAE,Test sMAPE (%),Test R2
+One-step persistence,0.412,0.66,0.517,5.837,0.919
+Country-fixed-effects linear,0.764,0.726,0.58,6.921,0.902
+Static 2021 persistence,,0.801,,,0.881
+CatBoost,1.238,1.692,1.187,13.022,0.47

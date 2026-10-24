@@ -1,0 +1,11 @@
+Rank,Model,Mean validation RMSE,Mean MAE,Mean sMAPE (%),Mean R2,RMSE SD
+1,One-step persistence,0.412,0.327,3.621,0.957,
+2,Country-fixed-effects linear,0.764,0.614,7.057,0.888,
+3,CatBoost Regressor,1.238,0.765,8.155,0.723,0.254
+4,LightGBM Regressor,1.268,0.788,8.465,0.706,0.3
+5,XGBoost Regressor,1.425,0.873,9.465,0.634,0.24
+6,Gradient Boosting Regressor,1.447,0.89,9.67,0.621,0.297
+7,Random Forest Regressor,1.477,0.933,10.086,0.609,0.152
+8,Log-linear regression,1.971,1.381,15.397,0.305,0.215
+9,Elastic Net,2.109,1.552,17.337,0.205,0.157
+10,Linear Regression,2.118,1.557,17.424,0.198,0.188

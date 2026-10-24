@@ -1,0 +1,7 @@
+Method,Evaluation subset,N,Nominal coverage,Empirical coverage,Half-width,Total width
+CatBoost,2022,37,90%,86.5%,1.821,3.643
+CatBoost,2023,37,90%,89.2%,1.897,3.794
+CatBoost,Overall,74,90%,87.8%,,
+Persistence,2022,37,90%,75.7%,0.924,1.848
+Persistence,2023,37,90%,94.6%,0.986,1.972
+Persistence,Overall,74,90%,85.1%,,

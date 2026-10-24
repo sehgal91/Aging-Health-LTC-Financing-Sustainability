@@ -1,0 +1,9 @@
+Analysis,Sample/specification,Main result,Interpretation
+Core-panel completeness,518 observations; 37 economies,No interpolation or grouped imputation for core variables,Core econometric and predictive results use complete data
+Constant-PPP GDP robustness,World Bank NY.GDP.PCAP.PP.KD,Fixed-effects aging and dependency coefficients remain statistically imprecise,Demographic conclusion is not driven by current-US-dollar GDP measurement
+Mundlak within-between test,Country-clustered,Wald chi-square 19.820; p<0.001,Within- and between-country relationships differ
+Pesaran CD,Fixed-effects residuals,CD=-2.240; p=0.025,Residual cross-sectional dependence is present
+Driscoll-Kraay sensitivity,Fixed effects; lag 2,Aging p=0.478; dependency p=0.074; GDP p<0.001,Dependence-robust inference does not establish a statistically robust aging effect
+Predictive benchmarks,2017-2021 validation; 2022-2023 test,Persistence and country-FE outperform CatBoost,Complexity does not improve prediction in this short annual panel
+Conformal benchmark,2022-2023,CatBoost coverage 87.8%; persistence 85.1% with narrower intervals,Coverage should be interpreted jointly with interval width
+Scenario backtest,"1-, 3-, and 5-year horizons",Scenario model does not systematically outperform persistence,Scenario outputs are sensitivity paths rather than validated forecasts

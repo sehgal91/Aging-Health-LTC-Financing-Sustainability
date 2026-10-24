@@ -1,0 +1,6 @@
+Scenario,2023 common sample mean,2028 mean modeled burden,Change from 2023,Interpretation
+Baseline,9.156,9.474,0.318,Continuation of historical demographic and macroeconomic trends
+Higher demographic change,9.156,9.503,0.347,Higher demographic-pressure sensitivity
+Lower demographic change,9.156,9.459,0.303,Lower demographic-pressure sensitivity
+Lower GDP growth,9.156,9.51,0.354,Macroeconomic downside sensitivity
+Higher GDP growth,9.156,9.437,0.282,Macroeconomic upside sensitivity
