@@ -1,9 +1,15 @@
-Analysis,Sample specification,Missing-data treatment,Purpose,Interpretation
-Core model,"37 economies; 518 observations; 2010–2023",No imputation required for core variables,Primary econometric and predictive analysis,Health expenditure burden with demographic and macroeconomic predictors
-Financing supplementary check,Observed Gov_Share country-years only,No full-panel imputation,Describe financing structure where available,Restricted-sample exploratory evidence
-Workforce supplementary check,Observed LTC_Workers country-years only,No full-panel imputation,Describe workforce capacity where available,Restricted-sample exploratory evidence
-High-income subgroup,32 economies,Core variables complete,Explore subgroup patterns,Descriptive subgroup evidence
-Emerging-economy subgroup,5 economies,Core variables complete,Explore subgroup patterns,Exploratory because the subgroup is small
-Derived-indicator sensitivity,Available parent-variable samples,No imputation beyond parent data,Assess descriptive transformations,Not independent evidence of fiscal or LTC sustainability
-Scenario sensitivity,Anchored 2024–2028 specification,Not applicable,Examine response to alternative aging dependency and income paths,Sensitivity trajectories rather than validated forecasts
-
+Robustness component,Sample specification,Missing-data treatment,Variables / method,Purpose,Interpretation
+Core full analytical panel,518 observations; 37 economies,No imputation required,"HealthExp_GDP, Pop65, Dependency, GDP_pc",Benchmark econometric and predictive analysis,Complete-coverage core evidence
+Core-variable specification,518 observations; 37 economies,No imputation required,"HealthExp_GDP, Pop65, Dependency, GDP_pc",Confirm results without sparse financing/workforce indicators,Principal demographic and macroeconomic evidence
+Restricted-sample financing description,41 observations; 3 countries,Missing Gov_Share retained as missing,Core variables + Gov_Share where observed,Exploratory financing description,Not generalized to the full panel
+Restricted-sample workforce description,58 observations; 16 countries,Missing LTC_Workers retained as missing,Core variables + LTC_Workers/Worker_Ratio where observed,Exploratory workforce description,Supplementary service-capacity evidence only
+High-income subgroup,32 economies,Core variables complete,Core variables,Subgroup assessment,Descriptive; not causal
+Emerging-economy subgroup,5 economies,Core variables complete,Core variables,Subgroup assessment,Exploratory because subgroup is small
+Derived-indicator sensitivity,Availability follows parent variables,No synthetic full-panel completion,"Public_Exposure, FPI, Worker_Ratio, Affordability",Descriptive sensitivity,Derived indicators are not independent fiscal-sustainability measures
+Scenario sensitivity,2024-2028,Core predictors only,"Pop65, Dependency, GDP_pc",Evaluate demographic/GDP trend sensitivity,Sensitivity analysis; not a validated forecast
+GDP-measurement robustness,518 observations; 37 economies,No imputation required,NY.GDP.PCAP.PP.KD replacing current-US$ GDP,Test currency/price-basis sensitivity,Demographic conclusion remains statistically imprecise
+Mundlak within-between test,518 observations; 37 economies,No imputation required,Cluster-robust Mundlak formulation,Test within-versus-between differences,Wald chi-square 19.820; p<0.001
+Cross-sectional-dependence diagnostic,Fixed-effects residuals,Not applicable,Pesaran CD,Assess dependence across economies,CD=-2.240; p=0.025
+Dependence-robust inference,Fixed-effects specification,Not applicable,Driscoll-Kraay SE; lag 2,Sensitivity of inference to dependence,Aging remains non-significant; dependency borderline; GDP negative and precise
+Predictive benchmark comparison,Chronological validation/test observations,Not applicable,One-step persistence and country-FE linear model,Benchmark complex ML,Both outperform CatBoost
+Conformal benchmark comparison,2022-2023 chronology,Not applicable,Persistence-based sequential conformal intervals,Compare coverage and sharpness,Persistence intervals are narrower; overall empirical coverage 85.1%
