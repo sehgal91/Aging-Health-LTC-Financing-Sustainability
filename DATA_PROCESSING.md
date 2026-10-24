@@ -1,25 +1,37 @@
-# Data Processing and Analytical Splits
+# Data Processing
 
-The final analytical frame is a 37-economy panel covering 2010–2023 (518 country-year observations).
+## Harmonization
 
-Processing includes country-name and year harmonization, exclusion of aggregate records, numeric plausibility checks, duplicate country-year screening, country-year merging, and final panel-key verification.
+Source tables are harmonized to a common country-year structure. Processing includes standardizing country names and years, removing aggregate/non-country records, checking units and numeric plausibility, screening duplicate country-year entries, and merging indicators on country and year.
 
-The complete-coverage core analysis uses `HealthExp_GDP`, `Pop65`, `Dependency`, and `GDP_pc`. Government-financing and LTC-workforce measures remain missing where unavailable and are not imputed into the core panel.
+## Analytical sample
 
-Derived variables include:
+The study sample contains 37 economies observed from 2010 through 2023. `code/build_analytical_panel.py` applies the country/year filter to the harmonized master table and verifies:
 
-- `Public_Exposure`: health expenditure burden combined with observed government financing share;
-- `FPI = HealthExp_GDP × Dependency`;
-- `Worker_Ratio = LTC_Workers / Pop65`;
-- `Affordability = GDP_pc / HealthExp_GDP`.
+- 518 country-year observations;
+- 37 unique economies;
+- complete `HealthExp_GDP`, `Pop65`, `Dependency`, and `GDP_pc` values; and
+- no duplicate country-year records.
 
-Predictive evaluation is strictly time ordered:
-- development period: 2010–2021;
-- expanding-window validation years: 2017–2021;
-- independent final test period: 2022–2023.
+## Missing data
 
-The final CatBoost model is selected using development-period validation only. The final test period is excluded from model-family and hyperparameter selection.
+The four core variables require no interpolation or grouped imputation in the analytical sample. Government-financing and LTC-workforce variables remain missing where unavailable. Analyses involving these variables are restricted to observed country-years.
 
-Sequential conformal prediction uses 2017–2021 validation residuals for the 2022 interval. After 2022 outcomes become available, the model is refitted through 2022 and the calibration pool is updated before predicting 2023.
+## Derived variables
 
-The 2024–2028 scenario component is modeled separately from CatBoost using an anchored log-linear within-country specification. Scenario outputs are sensitivity trajectories rather than validated forecasts.
+The repository distinguishes observed variables from deterministic derived indicators:
+
+- `Public_Exposure`: health expenditure burden combined with government financing share;
+- `FPI`: health expenditure burden combined with total age dependency;
+- `Worker_Ratio`: LTC workforce relative to the older population;
+- `Affordability`: GDP per capita relative to health expenditure burden.
+
+These derived variables are not used as independent core predictors when they are mathematically constructed from the same underlying variables.
+
+## Temporal evaluation
+
+Predictive development uses 2010–2021. Validation is strictly chronological over 2017–2021. The 2022–2023 period is reserved for independent evaluation. Sequential conformal prediction calibrates 2022 from prior validation errors and updates the conformity-score pool only after 2022 outcomes become available before constructing 2023 intervals.
+
+## Scenario analysis
+
+Scenario trajectories are anchored to observed 2023 health expenditure burden and extend through 2028. They manipulate demographic and GDP trends only and are evaluated against persistence using rolling-origin backtests. The outputs are interpreted as sensitivity paths rather than unconditional forecasts.
