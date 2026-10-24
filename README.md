@@ -1,85 +1,91 @@
 # Health Expenditure Burden Across 37 Economies
 
-This repository contains the analytical data, reproducibility documentation, scripts, and supporting outputs for the study **“Health Expenditure Burden Across 37 Economies: Panel Econometrics, Explainable Machine Learning, and Scenario Sensitivity Analysis.”**
+This repository accompanies the study **“Health Expenditure Burden Across 37 Economies: Panel Econometrics, Explainable Machine Learning, and Scenario Sensitivity Analysis.”**
 
-The primary outcome is total health expenditure as a percentage of GDP, interpreted as **health expenditure burden**. It is not direct long-term-care (LTC) expenditure and does not by itself establish LTC financing or fiscal sustainability.
+## Study scope
 
-## Final analytical design
+The analysis covers 37 economies over 2010–2023 (518 country-year observations). The primary outcome is **health expenditure burden**, measured as current health expenditure as a percentage of GDP. The complete-coverage core predictors are population aged 65 years and above, total age dependency ratio, and GDP per capita. Government-financing and long-term-care workforce variables are used only as supplementary restricted-sample indicators because their country-year coverage is substantially smaller.
 
-- Panel: 37 economies, 2010–2023, 518 country-year observations.
-- Economy groups: 32 high-income economies and 5 emerging economies.
-- Complete core variables: health expenditure burden, population aged 65 years and above, old-age dependency ratio, and GDP per capita.
-- Restricted supplementary variables: government financing share (41 observations, 3 countries) and LTC workforce capacity (58 observations, 16 countries). These variables are not imputed to create full-panel predictors.
-- Predictive development period: 2010–2021 (N = 444).
-- Expanding-window validation years: 2017–2021.
-- Independent final test period: 2022–2023 (N = 74).
+The main analytical components are:
 
-## Econometric framework
+- log-log pooled, fixed-effects, random-effects, and within-between panel analysis with country-clustered inference;
+- constant-PPP GDP robustness analysis;
+- cluster-robust Mundlak, Pesaran cross-sectional-dependence, and Driscoll-Kraay robustness checks;
+- expanding-window predictive validation during 2017–2021;
+- independent evaluation on 2022–2023;
+- comparison with one-step persistence and country-fixed-effects predictive benchmarks;
+- CatBoost-based SHAP interpretation as a secondary nonlinear diagnostic;
+- sequential conformal prediction compared with a persistence-based interval benchmark; and
+- anchored 2024–2028 scenario sensitivity analysis with rolling-origin backtesting.
 
-The principal analysis uses pooled, fixed-effects, and random-effects log-log panel models with year effects and country-clustered inference. Within-between decomposition distinguishes persistent cross-country differences from within-country changes over time.
+## Core variables
 
-## Predictive framework
+| Variable | Definition | Source / indicator |
+|---|---|---|
+| `HealthExp_GDP` | Current health expenditure as % of GDP | World Bank WDI `SH.XPD.CHEX.GD.ZS`, sourced from the WHO Global Health Expenditure Database |
+| `Pop65` | Population aged 65 years and above (% of total population) | World Bank WDI `SP.POP.65UP.TO.ZS` |
+| `Dependency` | Total age dependency ratio (% of working-age population) | World Bank WDI `SP.POP.DPND` |
+| `GDP_pc` | GDP per capita, current US$ | World Bank WDI `NY.GDP.PCAP.CD` |
+| PPP robustness | GDP per capita, PPP, constant 2021 international $ | World Bank WDI `NY.GDP.PCAP.PP.KD` |
 
-CatBoost was selected using development-period expanding-window validation only. The final selected configuration was:
+The total age dependency ratio includes dependents aged 0–14 and 65 years and above relative to the working-age population aged 15–64 years.
 
-- iterations = 500
-- learning_rate = 0.10
-- depth = 8
-- l2_leaf_reg = 5
-- loss = RMSE
-- random_seed = 42
-- boosting_type = Plain
+## Main numerical results
 
-Final predictive results:
+The fixed-effects aging elasticity is 0.030 and statistically imprecise. The within-country income elasticity of per-capita health expenditure is 0.857, compared with 1.141 between countries; the corresponding confidence intervals include unity. A cluster-robust Mundlak test rejects equality of within- and between-country relationships (Wald chi-square = 19.820, df = 3, p < 0.001), and the Pesaran CD test indicates residual cross-sectional dependence (CD = -2.240, p = 0.025).
 
-- mean expanding-window validation RMSE = 1.238
-- independent 2022–2023 test RMSE = 1.692
-- test MAE = 1.187
-- test sMAPE = 13.022%
-- test R² = 0.470
+For prediction, one-step persistence achieved mean expanding-window validation RMSE 0.412 and 2022–2023 test RMSE 0.660. The country-fixed-effects linear benchmark achieved validation RMSE 0.764 and test RMSE 0.726. CatBoost achieved validation RMSE 1.238 and test RMSE 1.692. CatBoost is therefore used as a nonlinear comparator rather than as the preferred predictive model.
 
-## Explainability
+CatBoost sequential conformal intervals achieved overall empirical coverage of 87.8% across 2022–2023. Persistence-based intervals achieved 85.1% overall coverage and were substantially narrower.
 
-Global SHAP importance on the 74 independent 2022–2023 test observations:
+The 2024–2028 scenario analysis is interpreted as sensitivity analysis rather than validated forecasting. The modeled 2028 mean burden ranges from 9.437% to 9.510% of GDP across the specified pathways, while the five-year rolling-origin backtest RMSE is 0.968 percentage points.
 
-| Predictor | Mean absolute SHAP | Share |
-|---|---:|---:|
-| GDP per capita | 0.843 | 36.1% |
-| Population aged 65+ | 0.604 | 25.8% |
-| Year | 0.482 | 20.6% |
-| Old-age dependency ratio | 0.309 | 13.2% |
-| Economy-group indicator | 0.098 | 4.2% |
+## Repository structure
 
-The strongest reported pairwise SHAP interaction is population aged 65+ × GDP per capita, with mean absolute interaction ≈ 0.197. SHAP values describe predictive contributions and are not causal effects.
-
-## Sequential conformal prediction
-
-For nominal 90% intervals:
-
-- 2022: calibration quantile = 1.821, empirical coverage = 86.5%, total interval width = 3.643 percentage points
-- 2023: calibration quantile = 1.897, empirical coverage = 89.2%, total interval width = 3.794 percentage points
-- overall 2022–2023 coverage = 87.8%
-- high-income coverage = 85.9%
-- emerging-economy coverage = 100.0% (N = 10)
-
-These values are interpreted as empirical calibration because temporal and cross-country dependence weaken standard exchangeability assumptions.
-
-## Scenario sensitivity
-
-The scenario component is separate from the CatBoost prediction model. It examines anchored 2024–2028 sensitivity trajectories under alternative demographic and GDP-growth assumptions. Rolling-origin backtesting did not systematically outperform persistence, and some projected predictor values extend beyond historical support. The scenario outputs are therefore interpreted as sensitivity trajectories rather than validated forecasts or causal policy effects.
-
-## Repository map
-
-| Path | Contents |
-|---|---|
-| `data/` | Cleaned inputs, analytical panel, and data dictionary |
-| `code/` | Data-integrity, variable-construction, analysis, and output-audit scripts |
-| `outputs/tables/` | Numerical outputs aligned to the manuscript and Supplementary Materials |
-| `docs/` | Supplementary and supporting documentation |
-| `DATA_SOURCES.md` | Variable scope and coverage |
-| `DATA_PROCESSING.md` | Panel construction and time-ordering rules |
-| `REPRODUCIBILITY.md` | Reproduction instructions and evidence boundaries |
+```text
+README.md
+REPRODUCIBILITY.md
+DATA_SOURCES.md
+DATA_PROCESSING.md
+requirements.txt
+code/
+    README_code.md
+    build_analytical_panel.py
+    catboost_sequential_conformal.py
+data/
+    master_panel_final.csv
+    master_panel_final.xlsx
+    data_dictionary.xlsx
+    *_standardized.csv
+    raw_cleaned/
+        README_raw_cleaned.md
+outputs/
+    tables/
+        README_tables.md
+        sm_table_s2_missing_data_summary.csv
+        sm_table_s3_robustness_strategy.csv
+        table5_descriptive_statistics.csv
+        table6_groupwise_comparison.csv
+        table7_econometric_results.csv
+        table8_predictive_validation.csv
+        table9_model_selection_and_test.csv
+        table10_scenario_sensitivity_summary.csv
+        sm_table_s7a_within_between.csv
+        sm_table_s7b_ppp_robustness.csv
+        sm_table_s8a_mundlak.csv
+        sm_table_s8b_pesaran_cd.csv
+        sm_table_s8c_driscoll_kraay.csv
+        sm_table_s13_foldwise_validation.csv
+        sm_table_s19_feature_importance.csv
+        sm_table_s20_sequential_conformal.csv
+        sm_table_s21a_scenario_backtest.csv
+        sm_table_s21b_predictor_support.csv
+        sm_table_s22_robustness_results.csv
+        sm_table_s23_independent_test.csv
+docs/
+    Supplementary_Materials.pdf
+```
 
 ## Interpretation boundaries
 
-Government-financing and LTC-workforce variables remain supplementary restricted-sample evidence. Public financing exposure, the Fiscal Pressure Index, workforce adequacy ratio, and affordability ratio are deterministic derived indicators and are not independent measures of fiscal sustainability. Direct LTC or fiscal-sustainability assessment would require harmonized LTC-specific expenditure, financing or revenue capacity, financing-gap information, institutional characteristics, and an explicit sustainability benchmark.
+`HealthExp_GDP` is a measure of total health-system expenditure relative to national economic output. It is **not** direct long-term-care expenditure and is **not** a direct measure of fiscal solvency. Government-financing and LTC-workforce indicators have restricted coverage and are not generalized to the complete 37-economy panel. Derived indicators are deterministic transformations used for descriptive or sensitivity purposes and are not treated as independent measures of fiscal sustainability.
