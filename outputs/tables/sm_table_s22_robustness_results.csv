@@ -1,9 +1,9 @@
-Analysis,Sample or specification,Interpretation boundary
-Core econometric analysis,"518 observations; 37 economies; 2010–2023","Health expenditure burden modeled with complete-coverage demographic and macroeconomic predictors"
-Financing supplementary analysis,"41 observations; 3 countries","Restricted-sample exploratory evidence; no full-panel generalization"
-LTC-workforce supplementary analysis,"58 observations; 16 countries; 2020–2023","Restricted-sample exploratory evidence; no full-panel generalization"
-Economy-group comparison,"32 high-income and 5 emerging economies","Unbalanced groups; emerging-economy findings are exploratory"
-Derived indicators,"Public financing exposure; FPI; workforce ratio; affordability","Deterministic transformations used descriptively or for sensitivity; not independent sustainability evidence"
-Predictive analysis,"Development through 2021; untouched test in 2022–2023","Validation-selected CatBoost; moderate test performance; SHAP is non-causal"
-Scenario sensitivity,"Anchored 2024–2028 log-linear paths","Not validated forecasts and not direct LTC-fiscal-sustainability estimates"
-
+Analysis,Sample/specification,Main result,Interpretation
+Core-panel completeness,518 observations; 37 economies,No interpolation or grouped imputation for core variables,Core econometric and predictive results use complete data
+Constant-PPP GDP robustness,World Bank NY.GDP.PCAP.PP.KD,Fixed-effects aging and dependency coefficients remain statistically imprecise,Demographic conclusion is not driven by current-US-dollar GDP measurement
+Mundlak within-between test,Country-clustered,Wald chi-square 19.820; p<0.001,Within- and between-country relationships differ
+Pesaran CD,Fixed-effects residuals,CD=-2.240; p=0.025,Residual cross-sectional dependence is present
+Driscoll-Kraay sensitivity,Fixed effects; lag 2,Aging p=0.478; dependency p=0.074; GDP p<0.001,Dependence-robust inference does not establish a statistically robust aging effect
+Predictive benchmarks,2017-2021 validation; 2022-2023 test,Persistence and country-FE outperform CatBoost,Complexity does not improve prediction in this short annual panel
+Conformal benchmark,2022-2023,CatBoost coverage 87.8%; persistence 85.1% with narrower intervals,Coverage should be interpreted jointly with interval width
+Scenario backtest,"1-, 3-, and 5-year horizons",Scenario model does not systematically outperform persistence,Scenario outputs are sensitivity paths rather than validated forecasts
